@@ -125,11 +125,16 @@ class Classifier:
             cache = deepcopy(output.past_key_values)
             cache.batch_repeat_interleave(len(indices))
             ids = torch.tensor([suffixes[i] for i in indices], device=self.device)
+            positions = {}
+            if self.model.config.model_type == "qwen2_5_vl":
+                # Transformers 4.57.1 broadcasts the single-image RoPE delta along sequence length.
+                continuation = torch.arange(n, n + length - 1, device=self.device) + output.rope_deltas[0, 0]
+                positions["position_ids"] = continuation.view(1, 1, -1).expand(3, len(indices), -1)
             branch = self.model(input_ids=ids[:, :-1], past_key_values=cache,
                                 attention_mask=torch.ones((len(indices), n + length - 1),
                                                           device=self.device, dtype=inputs["attention_mask"].dtype),
                                 cache_position=torch.arange(n, n + length - 1, device=self.device),
-                                use_cache=True, logits_to_keep=length - 1)
+                                use_cache=True, logits_to_keep=length - 1, **positions)
             logp = branch.logits.float().log_softmax(-1)
             scores[indices] += logp.gather(-1, ids[:, 1:].unsqueeze(-1)).sum((1, 2))
         return scores
