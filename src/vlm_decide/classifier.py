@@ -177,8 +177,10 @@ class Classifier:
         inputs, meta = self._prepare(image, question, choices, max_edge=max_edge, output=output)
         self._sync()
         model_started = time.perf_counter()
-        stopping = {"stop_strings": ["]"], "tokenizer": self.processor.tokenizer} if output == "choice" else {}
-        budget = max(map(len, self._suffixes(choices))) + 2 if output == "choice" else 64
+        suffixes = self._suffixes(choices)
+        ending_ids = {self.processor.tokenizer.eos_token_id, *(s[-1] for s in suffixes)}
+        stopping = {"eos_token_id": list(ending_ids)} if output == "choice" else {}
+        budget = max(map(len, suffixes)) + 2 if output == "choice" else 64
         sequence = self.model.generate(**inputs, do_sample=False, max_new_tokens=budget, **stopping,
                                        use_cache=True, pad_token_id=self.processor.tokenizer.eos_token_id)
         tokens = sequence[:, inputs["input_ids"].shape[1]:]
