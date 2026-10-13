@@ -11,7 +11,7 @@ def main():
     assert paths, "Stage the intended source files before checking"
     assert [p for p in paths if p.lower().endswith(".md")] == ["README.md"]
     readme = subprocess.check_output(["git", "show", ":README.md"], cwd=root).decode().strip()
-    assert len(readme.splitlines()) == 1 and readme.endswith(".")
+    assert readme.startswith("# vlm-decide")
     for path in paths:
         assert Path(path).suffix == ".py" or path in {"README.md", "LICENSE", ".gitignore", "pyproject.toml"}, path
         text = subprocess.check_output(["git", "show", ":"+path], cwd=root).decode()
