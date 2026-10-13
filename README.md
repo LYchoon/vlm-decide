@@ -83,12 +83,12 @@ Use `--reference reference.jpg` one or more times to add reference images. Use `
 
 The following results use `Qwen/Qwen3-VL-2B-Instruct` revision `89644892e4d85e24eaac8bacfd4f463576704203`, FP16, batch size 1, a long-edge limit of 224 pixels, and one RTX 2080 Ti. The human-verified binary cohort contains 100 images: 40 development images and 60 held-out test images. Latency and throughput use 300 runs, corresponding to three repetitions of the same 100 images.
 
-| Method | What it does | p50 latency | Images/s | Held-out accuracy | Invalid outputs |
+| Method | What it does | p50 latency ↓ | Images/s ↑ | Held-out accuracy ↑ | Invalid outputs ↓ |
 |---|---|---:|---:|---:|---:|
 | Full candidate scoring | Scores every complete candidate independently | 146.4 ms | 6.53 | 93.3% | 0 / 300 |
-| Cached candidate scoring | Reuses one prefill and branches the KV cache | 127.0 ms | 7.50 | 93.3% | 0 / 300 |
 | Short-answer generation | Generates only the bracketed choice | 122.7 ms | 7.82 | 93.3% | 0 / 300 |
 | JSON generation | Generates and parses a JSON label | 352.2 ms | 2.70 | 86.7% | 15 / 300 |
+| **Cached candidate scoring (ours)** | Reuses one prefill and branches the KV cache | **127.0 ms** | **7.50** | **93.3%** | **0 / 300** |
 
 Cached scoring reduced median latency by 13.2% and increased throughput by 14.9% relative to full candidate scoring while preserving every prediction. It was 2.77x faster than JSON generation and avoided invalid structured outputs. Short-answer generation was slightly faster in this two-class test, while cached scoring additionally returns deterministic scores and a probability distribution over every candidate. Across 900 cached-versus-full parity checks at 224, 448, and 672 pixels, the largest probability difference was 0.00397 and no predicted label changed.
 
