@@ -24,3 +24,8 @@ data/
 private/
 reports/
 cache/
+!results/imagenette-20261014/summary.json
+!results/imagenette-20261014/config.json
+!results/imagenette-20261014/dataset.json
+!results/imagenette-20261014/manifest.json
+!results/imagenette-20261014/predictions.jsonl

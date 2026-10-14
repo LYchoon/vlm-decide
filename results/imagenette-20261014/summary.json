@@ -1,0 +1,232 @@
+{
+  "complete": true,
+  "completed_runs": 800,
+  "planned_runs": 800,
+  "methods": {
+    "cached": {
+      "n": 200,
+      "errors": 0,
+      "top1_accuracy": 0.99,
+      "invalid_outputs": 0,
+      "strict_invalid_outputs": 0,
+      "strict_top1_accuracy": 0.99,
+      "p50_seconds": 0.19495583814568818,
+      "p95_seconds": 0.23007097700610757,
+      "images_per_second": 5.0574969354981745,
+      "cuda_peak_allocated_gib": 4.192419528961182,
+      "cuda_peak_reserved_gib": 4.240234375,
+      "per_class": {
+        "tench": {
+          "n": 20,
+          "correct": 20
+        },
+        "English springer spaniel": {
+          "n": 20,
+          "correct": 20
+        },
+        "cassette player": {
+          "n": 20,
+          "correct": 20
+        },
+        "chain saw": {
+          "n": 20,
+          "correct": 20
+        },
+        "church": {
+          "n": 20,
+          "correct": 20
+        },
+        "French horn": {
+          "n": 20,
+          "correct": 20
+        },
+        "garbage truck": {
+          "n": 20,
+          "correct": 20
+        },
+        "gas pump": {
+          "n": 20,
+          "correct": 18
+        },
+        "golf ball": {
+          "n": 20,
+          "correct": 20
+        },
+        "parachute": {
+          "n": 20,
+          "correct": 20
+        }
+      }
+    },
+    "full": {
+      "n": 200,
+      "errors": 0,
+      "top1_accuracy": 0.99,
+      "invalid_outputs": 0,
+      "strict_invalid_outputs": 0,
+      "strict_top1_accuracy": 0.99,
+      "p50_seconds": 0.7900877390056849,
+      "p95_seconds": 0.8532512676902115,
+      "images_per_second": 1.2538052467626428,
+      "cuda_peak_allocated_gib": 3.9898509979248047,
+      "cuda_peak_reserved_gib": 4.240234375,
+      "per_class": {
+        "tench": {
+          "n": 20,
+          "correct": 20
+        },
+        "English springer spaniel": {
+          "n": 20,
+          "correct": 20
+        },
+        "cassette player": {
+          "n": 20,
+          "correct": 20
+        },
+        "chain saw": {
+          "n": 20,
+          "correct": 20
+        },
+        "church": {
+          "n": 20,
+          "correct": 20
+        },
+        "French horn": {
+          "n": 20,
+          "correct": 20
+        },
+        "garbage truck": {
+          "n": 20,
+          "correct": 20
+        },
+        "gas pump": {
+          "n": 20,
+          "correct": 18
+        },
+        "golf ball": {
+          "n": 20,
+          "correct": 20
+        },
+        "parachute": {
+          "n": 20,
+          "correct": 20
+        }
+      }
+    },
+    "choice": {
+      "n": 200,
+      "errors": 0,
+      "top1_accuracy": 0.99,
+      "invalid_outputs": 0,
+      "strict_invalid_outputs": 0,
+      "strict_top1_accuracy": 0.99,
+      "p50_seconds": 0.13891003699973226,
+      "p95_seconds": 0.1808674270287156,
+      "images_per_second": 7.041190418449722,
+      "cuda_peak_allocated_gib": 4.003356456756592,
+      "cuda_peak_reserved_gib": 4.240234375,
+      "per_class": {
+        "tench": {
+          "n": 20,
+          "correct": 20
+        },
+        "English springer spaniel": {
+          "n": 20,
+          "correct": 20
+        },
+        "cassette player": {
+          "n": 20,
+          "correct": 20
+        },
+        "chain saw": {
+          "n": 20,
+          "correct": 20
+        },
+        "church": {
+          "n": 20,
+          "correct": 20
+        },
+        "French horn": {
+          "n": 20,
+          "correct": 20
+        },
+        "garbage truck": {
+          "n": 20,
+          "correct": 20
+        },
+        "gas pump": {
+          "n": 20,
+          "correct": 18
+        },
+        "golf ball": {
+          "n": 20,
+          "correct": 20
+        },
+        "parachute": {
+          "n": 20,
+          "correct": 20
+        }
+      }
+    },
+    "json": {
+      "n": 200,
+      "errors": 0,
+      "top1_accuracy": 0.92,
+      "invalid_outputs": 15,
+      "strict_invalid_outputs": 200,
+      "strict_top1_accuracy": 0.0,
+      "p50_seconds": 0.6357449684292078,
+      "p95_seconds": 0.8085310570895672,
+      "images_per_second": 1.40411253803374,
+      "cuda_peak_allocated_gib": 4.0110626220703125,
+      "cuda_peak_reserved_gib": 4.240234375,
+      "per_class": {
+        "tench": {
+          "n": 20,
+          "correct": 19
+        },
+        "English springer spaniel": {
+          "n": 20,
+          "correct": 20
+        },
+        "cassette player": {
+          "n": 20,
+          "correct": 20
+        },
+        "chain saw": {
+          "n": 20,
+          "correct": 20
+        },
+        "church": {
+          "n": 20,
+          "correct": 20
+        },
+        "French horn": {
+          "n": 20,
+          "correct": 7
+        },
+        "garbage truck": {
+          "n": 20,
+          "correct": 20
+        },
+        "gas pump": {
+          "n": 20,
+          "correct": 18
+        },
+        "golf ball": {
+          "n": 20,
+          "correct": 20
+        },
+        "parachute": {
+          "n": 20,
+          "correct": 20
+        }
+      }
+    }
+  },
+  "cached_full_parity": {
+    "paired_runs": 200,
+    "label_disagreements": 0,
+    "max_probability_difference": 6.598047912120819e-05
+  }
+}

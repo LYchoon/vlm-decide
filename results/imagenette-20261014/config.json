@@ -1,0 +1,51 @@
+{
+  "model": "Qwen/Qwen3-VL-2B-Instruct",
+  "revision": "89644892e4d85e24eaac8bacfd4f463576704203",
+  "device": "cuda:0",
+  "dtype": "float16",
+  "threads": 4,
+  "methods": [
+    "cached",
+    "full",
+    "choice",
+    "json"
+  ],
+  "images": 200,
+  "repetitions": 1,
+  "max_edge": 224,
+  "candidate_batch_size": 10,
+  "implementation": "public repository unchanged",
+  "protocol_version": "semantic-labels-fenced-json-v1",
+  "warmup_per_method": 3,
+  "source_commit": "3e1f3c0df7c182bf1a680c863f53a3070b736893",
+  "manifest_sha256": "ef6eea85312210c300a8e1d7534d937caed874ce802b8854707a5f4c2cd1d466",
+  "question": "What is the main object in the image? Choose the best matching category.",
+  "choice_order": [
+    "tench",
+    "English springer spaniel",
+    "cassette player",
+    "chain saw",
+    "church",
+    "French horn",
+    "garbage truck",
+    "gas pump",
+    "golf ball",
+    "parachute"
+  ],
+  "class_descriptions": {
+    "tench": "tench, a freshwater fish",
+    "English springer spaniel": "English springer spaniel, a dog breed",
+    "cassette player": "cassette player",
+    "chain saw": "chain saw",
+    "church": "church building",
+    "French horn": "French horn, a brass musical instrument",
+    "garbage truck": "garbage truck",
+    "gas pump": "gas pump, a fuel dispenser",
+    "golf ball": "golf ball",
+    "parachute": "parachute"
+  },
+  "classifier_sha256": "371e06a0bb6652c9831e3dec60a8d2fc94fd822c1dcf86da7a4dd618bb626fa4",
+  "runner_sha256": "a04622fcf9f4c754ff94b2334a6dc6eb728c56ddc012f5c331c32de0d1f563ff",
+  "torch": "2.8.0+cu126",
+  "transformers": "4.57.1"
+}
