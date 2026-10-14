@@ -148,21 +148,6 @@ python experiments/imagenette.py self-check
 python experiments/imagenette.py run --data data/imagenette200 --output results/rerun --device cuda:0 --dtype float16
 ```
 
-### Earlier human-verified binary reference
-
-The following results use `Qwen/Qwen3-VL-2B-Instruct` revision `89644892e4d85e24eaac8bacfd4f463576704203`, FP16, batch size 1, a long-edge limit of 224 pixels, and one RTX 2080 Ti. The human-verified binary cohort contains 100 images: 40 development images and 60 held-out test images. Latency and throughput use 300 runs, corresponding to three repetitions of the same 100 images.
-
-| Method | What it does | p50 latency ↓ | Images/s ↑ | Held-out accuracy ↑ | Invalid outputs ↓ |
-|---|---|---:|---:|---:|---:|
-| Full candidate scoring | Scores every complete candidate independently | 146.4 ms | 6.53 | **93.3%** | **0 / 300** |
-| Short-answer generation | Generates only the bracketed choice | **122.7 ms** | **7.82** | **93.3%** | **0 / 300** |
-| JSON generation | Generates and parses a JSON label | 352.2 ms | 2.70 | 86.7% | 15 / 300 |
-| **Cached candidate scoring (ours)** | Reuses one prefill and branches the KV cache | 127.0 ms | 7.50 | **93.3%** | **0 / 300** |
-
-Cached scoring reduced median latency by 13.2% and increased throughput by 14.9% relative to full candidate scoring while preserving every prediction. It was 2.77x faster than JSON generation and avoided invalid structured outputs. Short-answer generation was 3.4% faster in median latency and had 4.3% higher throughput in this two-class test, making it the fastest option when only a generated label is needed. Cached scoring is intended for workflows that also need every candidate score and the resulting relative probability distribution, such as threshold-based filtering, ranking, and routing uncertain cases for review. Across 900 cached-versus-full parity checks at 224, 448, and 672 pixels, the largest probability difference was 0.00397 and no predicted label changed.
-
-These measurements describe this model, hardware, prompt, and image cohort. They are not a general accuracy claim, and the candidate probabilities are not calibrated.
-
 ## Roadmap
 
 The next step is to add optional RLCD-style training for stronger confidence separation and better calibration on task-specific data while retaining the same candidate-scoring interface. Future evaluations will report calibration metrics alongside accuracy and throughput; until then, the current probabilities should be interpreted only relative to the supplied candidate set.
