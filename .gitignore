@@ -29,3 +29,5 @@ cache/
 !results/imagenette-20261014/dataset.json
 !results/imagenette-20261014/manifest.json
 !results/imagenette-20261014/predictions.jsonl
+!results/cv-20261023/metrics.json
+!results/cv-20261023/protocol.json

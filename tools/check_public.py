@@ -15,6 +15,7 @@ def main():
     assert readme.startswith("# vlm-decide")
     result_files = {f"results/imagenette-20261014/{name}" for name in
                     ("summary.json", "config.json", "dataset.json", "manifest.json", "predictions.jsonl")}
+    result_files |= {f"results/cv-20261023/{name}" for name in ("metrics.json", "protocol.json")}
     for path in paths:
         assert (Path(path).suffix == ".py" or path in result_files
                 or path in {"README.md", "LICENSE", ".gitignore", "pyproject.toml"}), path
